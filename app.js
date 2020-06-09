@@ -16,7 +16,7 @@ var app = express();
 var http = require('http');
 
 var server = http.createServer(app);
-跨域
+// 跨域
 var cors = require('cors');
 app.use(cors());
 

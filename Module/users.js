@@ -162,7 +162,7 @@ postRegist=(req,res) => {
                 {
                     data: {},
                     meta: {
-                        code: 500,
+                        code: 401,
                         msg: '用户名已存在!'
                     }
                 }
@@ -193,7 +193,7 @@ putuserpwd =(req,res) => {
 
     // 检测是否传入用户名
     if (updata.username) {
-        var username = updata.username
+        var username = req.user.username
     } else {
         res.send({
             data: {},

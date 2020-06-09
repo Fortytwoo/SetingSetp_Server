@@ -4,7 +4,7 @@ const mysql = require('mysql')
 module.exports = {
 //数据库配置
     config :{
-        host: '49.233.20.174',
+        host: '127.0.0.1',
         port: '3306',
         username: 'app_Motion',
         password: '12345678',
