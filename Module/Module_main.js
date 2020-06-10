@@ -138,6 +138,7 @@ putSetp = async (req, res) => {
                     code: 400,
                     msg: '请输入更大的步数'
                 })
+                return
             }
             // 历史移动距离
 
@@ -150,13 +151,14 @@ putSetp = async (req, res) => {
                 "list": [
                     {
                         "active": 1,
-                        // 消耗卡路里
-                        "calories": 0.3 * lowcalories + lowcalories,
+                        // 消耗卡路里 设置随机增大的数
+                        "calories": 0.3 * lowcalories + lowcalories+ Math.floor(Math.random()*(10-2+1)+2),
                         "created": timetool.timeFormat('yyyy-MM-dd hh:mm:ss'),
                         "dataSource": 2,
                         "dayMeasurementTime": timetool.timeFormat('yyyy-MM-dd'),
                         "deviceId": "M_NULL",
-                        "distance": 0.3 * lowdistance + lowdistance,
+                        // 运动距离 ，随机增大的数
+                        "distance": 0.3 * lowdistance + lowdistance+ Math.floor(Math.random()*(20-3+1)+3),
                         "id": '',
                         "isUpload": 0,
                         "measurementTime": timetool.timeFormat('yyyy-MM-dd hh:mm:ss'),
@@ -171,6 +173,7 @@ putSetp = async (req, res) => {
                 ]
             }
         }
+        // 调试用，用于检测发送的数据是否异常
         // console.log(cookie);
         // console.log(postSetp);
         // console.log(postdata);
@@ -193,8 +196,7 @@ putSetp = async (req, res) => {
             body: postdata,
             gzip: true
         }, function (error, response, body) {
-            console.log(body.code);
-            
+            console.log(body);
             if (data.code !== 200) {
                 res.send({
                     data: {},
