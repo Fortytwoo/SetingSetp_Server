@@ -46,7 +46,7 @@ putSetp = async (req, res) => {
     var username = req.user.username
     // 检查 UserId 是否存在
     if (updata.userId) {
-        var userId = updata.userId
+        var userId = String(Number(updata.userId)+ 1000000)
     } else {
         res.send({
             data: {},
