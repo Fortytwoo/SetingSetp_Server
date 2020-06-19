@@ -5,6 +5,7 @@ module.exports = {
 //数据库配置
     config :{
         host: '127.0.0.1',
+        // host: '49.233.20.174',
         port: '3306',
         username: 'app_Motion',
         password: '12345678',

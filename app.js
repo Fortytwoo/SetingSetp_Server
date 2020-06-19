@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var fs = require('fs');
 
 var indexRouter = require('./routes/index');
 var bodyParser = require('body-parser');
@@ -14,6 +15,7 @@ var app = express();
 
 // 改写入口文件
 var http = require('http');
+var https = require('https');
 
 var server = http.createServer(app);
 // 跨域
@@ -35,6 +37,12 @@ app.use(expressJWT({
         '/api/regist',
         '/api/RecoverPwd',
         '/api/login',
+        '/api/wxapp',
+        '/api/wxapp/login',
+        '/api/wxapp/putSteps',
+        '/api/wxapp/binduser',
+        '/api/wxapp/settingParameter',
+        '/api/wxapp/putPassword'        
     ] //⽩白名单,除了了这⾥里里写的地址，其他的URL都需要验证
 }));
 
@@ -57,9 +65,19 @@ app.use('/api', indexRouter);
 
 
 
-
-
-
 module.exports = app;
 
-server.listen('3000')
+const options = {
+  key: fs.readFileSync('./key/2_lujingru42.top.key'),
+  cert: fs.readFileSync('./key/1_lujingru42.top_bundle.crt')
+};
+// Http端口为3000
+server.listen('3000');
+// https端口为3001
+https.createServer(options, app).listen(3001);
+
+
+
+
+
+

@@ -208,7 +208,7 @@ putSetp = async (req, res) => {
                 return
             } else {
                 // 如果正确提交，则将信息保存到数据库中
-                var sql = `UPDATE user SET cookie ="${cookie}",userId ="${userId}",url ="${urlAll}",Sprot ="${step}" WHERE username = "${username}"`
+                var sql = `UPDATE user SET cookie ="${cookie}",userId ="${String(Number(userId)-1000000)}",url ="${urlAll}",Sprot ="${step}" WHERE username = "${username}"`
                 var sqlArr = []
                 var callBack = (err, data) => {
                     if (err) {

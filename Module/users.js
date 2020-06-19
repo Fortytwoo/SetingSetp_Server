@@ -296,19 +296,6 @@ putuserpwd =(req,res) => {
         dbconfig.sqlConnect(sql, sqlArr, callBack)
     }
     dbconfig.sqlConnect(sql, sqlArr, callBack)
-
-    // var sql = `UPDATE user SET password ="${putpwdInfo.newpassword}" WHERE username = "${putpwdInfo.username}"`
-    // var sqlArr = []
-    // var callBack = (err,data) => {
-        
-    //     if (err) {
-    //         console.log(err);
-            
-    //     } else {
-    //         res.send(data)
-    //     }
-    // }
-    // dbconfig.sqlConnect(sql, sqlArr, callBack)
 }
 // 找回密码
 RecoverPwd =(req,res) => {
